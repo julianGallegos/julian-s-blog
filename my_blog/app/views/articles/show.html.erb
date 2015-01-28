@@ -9,34 +9,10 @@
 </p>
 
 <h2>Comments</h2>
-<% @article.comments.each do |comment| %>
-	<p>
-		<strong>Commenter:</strong>
-		<%= comment.commenter %>
-	</p>
+<%= render @article.comments %>
 
-	<p>
-		<strong>Comment</strong>
-		<%= comment.body %>
-	</p>
-
-<% end %>
-
-<h2>Add you comments:</h2>
-<%=form_for([@article, @article.comments.build]) do |f| %>
-<p>
-	<%= f.label :Name %><br>
-	<%= f.text_field :commenter %>
-</p>
-
-<p>
-	<%= f.label :comment %><br>
-	<%= f.text_area :body %>
-</p>
-<p>
-	<%= f.submit %>
-</p>
-<% end %>
+<h2>Add your comments:</h2>
+<%= render 'comments/form' %>
 
 <%= link_to 'Back', articles_path %> |
 
